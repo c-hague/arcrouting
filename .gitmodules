@@ -1,3 +1,3 @@
-[submodule "suibs/scikit-geometry"]
-	path = suibs/scikit-geometry
+[submodule "subs/scikit-geometry"]
+	path = subs/scikit-geometry
 	url = git@github.com:c-hague/scikit-geometry.git
