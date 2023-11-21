@@ -1,1 +1,1 @@
-from .polygon import Polygon, SimplePolygon
+from .polygon import Polygon, BoundingBox
