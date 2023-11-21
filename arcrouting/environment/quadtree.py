@@ -11,6 +11,9 @@ class QuadTree:
 
     def free(self, point: np.ndarray):
         self.root.free(point)
+    
+    def query(self, bbox: BoundingBox, free:bool=True):
+        return self.root.query(bbox, free)
 
     def __iter__(self):
         items = [self.root]
@@ -83,3 +86,15 @@ class QuadTreeNode:
                         or polygon.yMax > self.bbox.yMin
                         or polygon.yMin < self.bbox.yMax)
         return self.bbox.intersects(self.bbox)
+
+    def query(self, bbox: BoundingBox, free: bool):
+        if len(self.children) <= 0:
+            if self.isFree == free:
+                return [self.bbox]
+            else:
+                return []
+        
+        r = []
+        for child in self.children:
+            r += child.query(bbox, free)
+        return r
